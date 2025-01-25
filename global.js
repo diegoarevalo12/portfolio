@@ -8,16 +8,20 @@ let pages = [
     { url: '', title: 'Home' },
     { url: 'projects/', title: 'Projects' },
     { url: 'contact/', title: 'Contact' },
-    { url: 'resume/', title: 'CV/Resume' }
+    { url: 'resume/', title: 'CV/Resume' },
+    { url: 'https://github.com/diegoarevalo12', title: 'GitHub' } // Add GitHub link here
 ];
 
+// Create navigation and add it to the body
 let nav = document.createElement('nav');
 document.body.prepend(nav);
 
+// Dynamically create navigation links
 for (let p of pages) {
     let url = p.url;
     let title = p.title;
-  
+
+    // Adjust URL for the home page if necessary
     const ARE_WE_HOME = document.documentElement.classList.contains('home');
     url = !ARE_WE_HOME && !url.startsWith('http') ? '../' + url : url;
 
@@ -25,12 +29,14 @@ for (let p of pages) {
     a.href = url;
     a.textContent = title;
 
+    // Highlight current page in the nav
     if (a.host === location.host && a.pathname === location.pathname) {
-      a.classList.add('current');
+        a.classList.add('current');
     }
 
+    // Open external links (like GitHub) in a new tab
     if (a.host !== location.host) {
-      a.target = '_blank';
+        a.target = '_blank';
     }
 
     nav.append(a);
