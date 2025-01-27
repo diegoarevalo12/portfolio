@@ -6,15 +6,15 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Diego Arévalo Fernández | CV/Resume</title>
     <script>
-        // Check if we're on localhost or GitHub Pages
+    
         const isLocal = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
     
-        // Dynamically set base URL depending on the environment
+        
         const baseElement = document.createElement('base');
         baseElement.href = isLocal ? '/' : '/portfolio/';
         document.head.appendChild(baseElement);
     
-        console.log('Base URL is set to:', baseElement.href); // Debugging log to confirm base URL
+        console.log('Base URL is set to:', baseElement.href); 
     </script>
     <link rel="stylesheet" href="../style.css">
     <style>
@@ -233,6 +233,6 @@
             <li><strong>Libraries/Frameworks:</strong> pandas, NumPy, Matplotlib, pywin32, Django, scikit-learn, openpyxl</li>
         </ul>
     </section>
-    <script type="module" src="global.js?v=20250124"></script>
+    <script type="module" src="/portfolio/global.js?v=20250124"></script>
 </body>
 </html>

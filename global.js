@@ -9,19 +9,19 @@ let pages = [
     { url: 'projects/', title: 'Projects' },
     { url: 'contact/', title: 'Contact' },
     { url: 'resume/', title: 'CV/Resume' },
-    { url: 'https://github.com/diegoarevalo12', title: 'GitHub' } // Add GitHub link here
+    { url: 'https://github.com/diegoarevalo12', title: 'GitHub' } 
 ];
 
-// Create navigation and add it to the body
+
 let nav = document.createElement('nav');
 document.body.prepend(nav);
 
-// Dynamically create navigation links
+
 for (let p of pages) {
     let url = p.url;
     let title = p.title;
 
-    // Adjust URL for the home page if necessary
+    
     const ARE_WE_HOME = document.documentElement.classList.contains('home');
     url = !ARE_WE_HOME && !url.startsWith('http') ? '../' + url : url;
 
@@ -29,12 +29,12 @@ for (let p of pages) {
     a.href = url;
     a.textContent = title;
 
-    // Highlight current page in the nav
+    
     if (a.host === location.host && a.pathname === location.pathname) {
         a.classList.add('current');
     }
 
-    // Open external links (like GitHub) in a new tab
+    
     if (a.host !== location.host) {
         a.target = '_blank';
     }
@@ -42,7 +42,7 @@ for (let p of pages) {
     nav.append(a);
 }
 
-// Inject the theme switcher dropdown into the page (always at the top)
+
 document.body.insertAdjacentHTML(
     'afterbegin',
     `
@@ -56,34 +56,33 @@ document.body.insertAdjacentHTML(
       </label>`
 );
 
-// Get the select element for the theme switcher
+
 const select = document.getElementById('theme-switcher');
 
-// Apply the theme when user selects an option
 select.addEventListener('input', function (event) {
   const selectedTheme = event.target.value;
 
-  // Set the color-scheme to the selected theme
+  
   document.documentElement.style.setProperty('color-scheme', selectedTheme);
 
-  // Save the selected theme in localStorage
+  
   localStorage.colorScheme = selectedTheme;
 });
 
-// Check for saved color scheme preference on page load
+
 window.addEventListener('DOMContentLoaded', () => {
   if ('colorScheme' in localStorage) {
     const savedScheme = localStorage.colorScheme;
     document.documentElement.style.setProperty('color-scheme', savedScheme);
-    select.value = savedScheme; // Set select dropdown to saved value
+    select.value = savedScheme; 
   } else {
-    // Default to 'Automatic' if no saved preference is found
+    
     select.value = 'light dark';
     document.documentElement.style.setProperty('color-scheme', 'light dark');
   }
 });
 
-// Ensure the toggle button is correctly positioned
+
 const style = document.createElement('style');
 style.innerHTML = `
   .color-scheme {

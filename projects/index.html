@@ -4,15 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script>
-        // Check if we're on localhost or GitHub Pages
+        
         const isLocal = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
     
-        // Dynamically set base URL depending on the environment
+        
         const baseElement = document.createElement('base');
         baseElement.href = isLocal ? '/' : '/portfolio/';
         document.head.appendChild(baseElement);
     
-        console.log('Base URL is set to:', baseElement.href); // Debugging log to confirm base URL
+        console.log('Base URL is set to:', baseElement.href); 
     </script>
     <link rel="stylesheet" href="../style.css">
 </head>
@@ -81,6 +81,6 @@
             <p>Dolore cupiditate minima excepturi rerum quae voluptate rem dolor sed, reprehenderit reiciendis pariatur optio eos ad voluptatibus, eaque explicabo inventore? Inventore expedita commodi nam temporibus. Vitae, fugiat unde. Eligendi, cum?</p>
         </article>
     </div>
-    <script type="module" src="global.js?v=20250124"></script>
+    <script type="module" src="/portfolio/global.js"></script>
 </body>
 </html>

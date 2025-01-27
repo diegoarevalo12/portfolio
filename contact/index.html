@@ -4,15 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script>
-        // Check if we're on localhost or GitHub Pages
+        
         const isLocal = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
     
-        // Dynamically set base URL depending on the environment
+        
         const baseElement = document.createElement('base');
         baseElement.href = isLocal ? '/' : '/portfolio/';
         document.head.appendChild(baseElement);
     
-        console.log('Base URL is set to:', baseElement.href); // Debugging log to confirm base URL
+        console.log('Base URL is set to:', baseElement.href);
     </script>
     <link rel="stylesheet" href="../style.css">
 </head>
@@ -20,24 +20,23 @@
     
     <h1>Contact</h1>
     <form action="mailto:darevalofernandez@ucsd.edu" method="POST" enctype="text/plain">
-        <!-- Email Address Field -->
+       
         <label for="email">Your Email:</label>
         <input type="email" name="email" id="email" value="" required>
         <br><br>
         
-        <!-- Subject Field -->
+    
         <label for="subject">Subject:</label>
         <input type="text" name="subject" id="subject" value="" required>
         <br><br>
         
-        <!-- Message Field -->
+    
         <label for="body">Message:</label>
         <textarea name="body" id="body" rows="5" cols="30"></textarea>
         <br><br>
         
-        <!-- Submit Button -->
         <button>Send Message</button>
     </form>
-    <script type="module" src="global.js?v=20250124"></script>
+    <script type="module" src="/portfolio/global.js?v=20250124"></script>
 </body>
 </html>
