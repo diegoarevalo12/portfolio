@@ -4,11 +4,15 @@ function $$(selector, context = document) {
   return Array.from(context.querySelectorAll(selector));
 }
 
+// ../ - taking one step back
+// ./  - look inside current dir (folder)
+// /   - look from the root
+
 let pages = [
-    { url: '/portfolio/', title: 'Home' },
-    { url: '/portfolio/projects/', title: 'Projects' },
-    { url: '/portfolio/contact/', title: 'Contact' },
-    { url: '/portfolio/resume/', title: 'CV/Resume' },
+    { url: 'index.html', title: 'Home' },
+    { url: 'projects/index.html', title: 'Projects' },
+    { url: 'contact/index.html', title: 'Contact' },
+    { url: 'resume/index.html', title: 'CV/Resume' },
     { url: 'https://github.com/diegoarevalo12', title: 'GitHub' } 
 ];
 
