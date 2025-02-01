@@ -3,7 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+    <script>
+    
+        const isLocal = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
+    
+        
+        const baseElement = document.createElement('base');
+        baseElement.href = isLocal ? '/' : '/portfolio/';
+        document.head.appendChild(baseElement);
+    
+        console.log('Base URL is set to:', baseElement.href); 
+    </script>
     <link rel="stylesheet" href="./style.css">
 </head>
 <body>
