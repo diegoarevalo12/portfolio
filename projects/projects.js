@@ -8,53 +8,64 @@ const projectsContainer = document.querySelector('.projects');
 renderProjects(projects, projectsContainer, 'h2');
 
 const projectsTitle = document.querySelector('.projects-title');
-
-
 if (projectsTitle) {
-    projectsTitle.innerText = `${projects.length} Projects`;
+  projectsTitle.innerText = `${projects.length} Projects`;
 }
 
 let arcGenerator = d3.arc().innerRadius(0).outerRadius(50);
+let colors = d3.scaleOrdinal(d3.schemeTableau10);
 
-let arc = arcGenerator({
-    startAngle: 0,
-    endAngle: 2 * Math.PI,
-  });
+function renderPieChart(projectsGiven) {
+  let newSVG = d3.select('svg');
+  newSVG.selectAll('path').remove(); 
+  d3.select('.legend').selectAll('li').remove(); 
 
-d3.select('svg').append('path').attr('d', arc).attr('fill', 'red');
 
-let rolledData = d3.rollups(
-    projects,
+  let newRolledData = d3.rollups(
+    projectsGiven,
     (v) => v.length,
-    (d) => d.year,
+    (d) => d.year
   );
 
-  let data = rolledData.map(([year, count]) => {
+
+  let newData = newRolledData.map(([year, count]) => {
     return { value: count, label: year };
   });
 
-let sliceGenerator = d3.pie().value((d) => d.value);
-let arcData = sliceGenerator(data);
+  
+  let newSliceGenerator = d3.pie().value((d) => d.value);
+  let newArcData = newSliceGenerator(newData);
+  let newArcs = newArcData.map((d) => arcGenerator(d));
 
+  
+  newArcs.forEach((arc, idx) => {
+    d3.select('svg')
+      .append('path')
+      .attr('d', arc)
+      .attr('fill', colors(idx));
+  });
 
-let arcs = arcData.map((d) => arcGenerator(d));
-
-let colors = d3.scaleOrdinal(d3.schemeTableau10);
-
-
-arcs.forEach((arc, idx) => {
-  d3.select('svg')
-    .append('path')
-    .attr('d', arc)
-    .attr('fill', colors(idx)); 
-});
-
-let legend = d3.select('.legend');
-data.forEach((d, idx) => {
+  
+  let legend = d3.select('.legend');
+  newData.forEach((d, idx) => {
     legend.append('li')
-          .attr('style', `--color:${colors(idx)}`) // set the style attribute while passing in parameters
-          .html(`<span class="swatch"></span> ${d.label} <em>(${d.value})</em>`); // set the inner html of <li>
-})
+      .attr('style', `--color:${colors(idx)}`)
+      .html(`<span class="swatch"></span> ${d.label} <em>(${d.value})</em>`);
+  });
+}
 
 
+renderPieChart(projects);
 
+
+let query = '';
+let searchInput = document.querySelector('.searchBar');
+searchInput.addEventListener('change', (event) => {
+  query = event.target.value; // Set query
+  let filteredProjects = projects.filter((project) => {
+    let values = Object.values(project).join(' ').toLowerCase();
+    return values.includes(query.toLowerCase());
+  });
+  renderProjects(filteredProjects, projectsContainer, 'h2');
+  renderPieChart(filteredProjects); // Re-render pie chart with filtered data
+});
