@@ -167,3 +167,16 @@ h1, h2, h3, h4, h5, h6 {
   border-radius: 50%;
   margin-right: 15px;
 }
+
+.project-year {
+  color: gray;
+  font-size: 0.9em;
+  font-style: italic;
+}
+
+#projects-plot {
+  max-width: 20em;
+  margin-block: 2em;
+
+  overflow: visible;
+}
