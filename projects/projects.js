@@ -14,10 +14,12 @@ if (projectsTitle) {
 let arcGenerator = d3.arc().innerRadius(0).outerRadius(50);
 let colors = d3.scaleOrdinal(d3.schemeTableau10);
 
+let filteredProjects = [...projects];
+
 function renderPieChart(projectsGiven) {
   let newSVG = d3.select('svg');
-  newSVG.selectAll('path').remove(); 
-  d3.select('.legend').selectAll('li').remove(); 
+  newSVG.selectAll('path').remove();
+  d3.select('.legend').selectAll('li').remove();
 
   let newRolledData = d3.rollups(
     projectsGiven,
@@ -47,17 +49,15 @@ function renderPieChart(projectsGiven) {
         let legend = d3.select('.legend');
         legend.selectAll('li')
           .attr('class', (_, index) => (selectedIndex === index ? 'selected' : ''));
-        
+
         if (selectedIndex === -1) {
-            renderProjects(projects, projectsContainer, 'h2');
-          } else {
-            let selectedYear = newData[selectedIndex].label; // Get the selected year
-            let filteredProjects = projectsGiven.filter((project) => project.year === selectedYear);
-            renderProjects(filteredProjects, projectsContainer, 'h2');
-          }
-
+          renderProjects(filteredProjects, projectsContainer, 'h2'); 
+        } else {
+          let selectedYear = newData[selectedIndex].label; 
+          let filteredByYear = filteredProjects.filter((project) => project.year === selectedYear);
+          renderProjects(filteredByYear, projectsContainer, 'h2');
+        }
       });
-
   });
 
   let legend = d3.select('.legend');
@@ -70,17 +70,17 @@ function renderPieChart(projectsGiven) {
 
 let selectedIndex = -1;
 
-
 renderPieChart(projects);
 
 let query = '';
 let searchInput = document.querySelector('.searchBar');
 searchInput.addEventListener('change', (event) => {
-  query = event.target.value; 
-  let filteredProjects = projects.filter((project) => {
+  query = event.target.value;
+  filteredProjects = projects.filter((project) => {
     let values = Object.values(project).join(' ').toLowerCase();
     return values.includes(query.toLowerCase());
   });
+  
   renderProjects(filteredProjects, projectsContainer, 'h2');
   renderPieChart(filteredProjects); 
 });
