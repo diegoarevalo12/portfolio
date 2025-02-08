@@ -180,3 +180,50 @@ h1, h2, h3, h4, h5, h6 {
 
   overflow: visible;
 }
+
+.legend {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(9em, 1fr));
+  gap: 1rem;
+  padding: 1rem;
+  border: 1px solid #ccc;
+  margin-top: 1rem;
+}
+
+
+.legend li {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+
+.legend .swatch {
+  width: 1em;
+  height: 1em;
+  background-color: var(--color);
+  border-radius: 0.25em;
+  display: inline-block;
+}
+
+.container {
+  display: flex;
+  align-items: center; 
+  gap: 2rem; 
+  padding: 1rem;
+}
+
+
+.container svg {
+  flex-shrink: 0; 
+}
+
+
+.container .legend {
+  flex: 1;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(9em, 1fr));
+  gap: 1rem;
+  padding: 1rem;
+  border: 1px solid #ccc;
+}
