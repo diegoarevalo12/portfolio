@@ -271,3 +271,9 @@ path {
   text-decoration: none;
   border-bottom: 1px dotted #000;
 }
+
+.gridlines line {
+  stroke: lightgray;
+  stroke-opacity: 0.7;
+  shape-rendering: crispEdges;
+}
