@@ -70,5 +70,13 @@
         "year": "2018",
         "image": "https://vis-society.github.io/labs/2/images/empty.svg",
         "description": "Dolore cupiditate minima excepturi rerum quae voluptate rem dolor sed, reprehenderit reiciendis pariatur optio eos ad voluptatibus, eaque explicabo inventore? Inventore expedita commodi nam temporibus. Vitae, fugiat unde. Eligendi, cum?"
+    },
+
+    {
+        "title": "Lab 7 Bikewatching Map",
+        "year": "2025",
+        "image": "https://vis-society.github.io/labs/2/images/empty.svg",
+        "description": "Interactive map showcasing bike traffic in the Boston area",
+        "url": "https://diegoarevalo12.github.io/bikewatching/"
     }
 ]
