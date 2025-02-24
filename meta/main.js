@@ -245,15 +245,11 @@ function updateTooltipContent(commit) {
 function updateTooltipVisibility(isVisible) {
     const tooltip = document.getElementById('commit-tooltip');
     tooltip.hidden = !isVisible;
-    if (isVisible) {
-        tooltip.classList.add('visible');
-    } else {
-        tooltip.classList.remove('visible');
-    }
+    
 }
 
 function updateTooltipPosition(event) {
     const tooltip = document.getElementById('commit-tooltip');
-    tooltip.style.left = `${event.clientX + 10}px`;
-    tooltip.style.top = `${event.clientY + 10}px`;
+    tooltip.style.left = `${event.clientX+10}px`;
+    tooltip.style.top = `${event.clientY+10}px`;
 }

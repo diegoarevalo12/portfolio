@@ -311,6 +311,11 @@ circle:hover {
   visibility: visible;
 }
 
+#commit-tooltip[hidden] {
+  opacity: 0;
+}
+
+
 dl.info {
   /* ... other styles ... */
   transition-duration: 500ms;
